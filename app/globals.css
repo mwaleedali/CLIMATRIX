@@ -1,0 +1,94 @@
+@import 'maplibre-gl/dist/maplibre-gl.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --surface-base:     #FAFAFB;
+  --surface-raised:   #FFFFFF;
+  --surface-elevated: #FFFFFF;
+  --surface-border:   #E5E5EA;
+  --surface-hover:    #F4F4F6;
+  --ink-primary:      #0A0A0F;
+  --ink-secondary:    #52525B;
+  --ink-muted:        #71717A;
+}
+
+.dark {
+  --surface-base:     #07070A;
+  --surface-raised:   #0F0F14;
+  --surface-elevated: #16161D;
+  --surface-border:   #1F1F28;
+  --surface-hover:    #1A1A22;
+  --ink-primary:      #FAFAFA;
+  --ink-secondary:    #A1A1AA;
+  --ink-muted:        #71717A;
+}
+
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html, body { background: var(--surface-base); color: var(--ink-primary); }
+
+::selection { background: rgba(168,85,247,0.30); color: inherit; }
+
+.scroll-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: var(--surface-border); border-radius: 999px; }
+.scroll-thin::-webkit-scrollbar-thumb:hover { background: #A855F7; }
+.scroll-thin::-webkit-scrollbar-track { background: transparent; }
+
+.maplibregl-ctrl-attrib { background: rgba(0,0,0,0.4) !important; color: #fff !important; }
+.maplibregl-ctrl-attrib a { color: #fff !important; }
+.dark .maplibregl-canvas { filter: contrast(1.02) brightness(0.95); }
+
+.brand-grid {
+  background-image:
+    linear-gradient(var(--surface-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--surface-border) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #22D3EE 0%, #A855F7 50%, #EC4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-border {
+  position: relative;
+  background: var(--surface-raised);
+}
+.gradient-border::before {
+  content: '';
+  position: absolute; inset: 0;
+  padding: 1px; border-radius: inherit;
+  background: linear-gradient(135deg, #22D3EE, #A855F7, #EC4899);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  pointer-events: none;
+}
+
+.climatrix-marker {
+  width: 22px; height: 22px; border-radius: 999px; cursor: pointer;
+  background: linear-gradient(135deg, #22D3EE, #A855F7, #EC4899);
+  box-shadow: 0 0 0 4px rgba(168,85,247,0.18), 0 0 24px rgba(168,85,247,0.6);
+  position: relative;
+}
+.climatrix-marker::after {
+  content: ''; position: absolute; inset: -8px; border-radius: 999px;
+  border: 2px solid rgba(168,85,247,0.5); animation: ringPulse 1.8s ease-out infinite;
+}
+@keyframes ringPulse {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.pulse-dot {
+  width: 10px; height: 10px; border-radius: 999px;
+  background: linear-gradient(135deg, #22D3EE, #A855F7, #EC4899);
+  box-shadow: 0 0 24px rgba(168,85,247,0.6);
+  animation: dotPulse 1.6s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%     { transform: scale(1.4); opacity: 0.6; }
+}
