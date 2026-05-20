@@ -24,7 +24,7 @@ export function SunMoonInfo({ data }: { data: WeatherBundle }) {
       </div>
       <div className="rounded-xl border border-surface-border bg-surface-raised/60 p-4">
         <div className="text-[10px] uppercase tracking-wider text-ink-muted">Moon Phase</div>
-        <div class="mt-2 flex items-center gap-2">
+        <div className="mt-2 flex items-center gap-2">
           <span className="text-3xl leading-none">{moon.emoji}</span>
           <div>
             <div className="text-sm text-ink-primary">{moon.phase}</div>
